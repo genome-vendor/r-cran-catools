@@ -1,0 +1,90 @@
+Changes:
+1) caMassClass-1.0 to caTools-1.0 - caTools created after splitting caMassClass
+   package:
+  - bin2raw and raw2bin files: endian variable was added
+  - raw2bin: additional error checking
+  - runmean, runmax, runmin, runquantile, runmad: additional error checking and
+    corrected error checking
+  - EndRule: added error checking
+  - runmean, runmax, runmin: additional parameter "alg" was added
+  - runmean - new C code can survive round-off errors
+2) caTools-1.1  (7/15/2005)
+  - read.GIF and write.GIF files were added.
+  - bin2raw and raw2bin files: much faster raw to numeric conversion
+  - sum.exact, cumsum.exact and runsum.exact  functions were added for 
+    under-flow safe addition.
+3) caTools-1.2 (8/8/2005)
+  - minor changes to .Rd files to fix problems found by new 'checkDocFiles'
+    function.
+4) caTools-1.3 (9/23/2005)
+  - changes to colAUC function. Parameters: plotROC and alg were added. 
+    Parameter 'p.val' was removed, since it gave wrong results in case of data 
+    with ties. And it was too complicated to fix.
+  - added much better testing of "colAUC" in Example section.
+4) caTools-1.4 (9/28/2005)
+  - a small change in 1.3 that used call to 'max' instead of 'pmax' made 
+    'colAUC' return wrong numbers in case of multi-feature data.
+5) caTools-1.5 (11/10/2005)
+  - several new examples
+  - functions raw2bin and bin2raw still work but return warnings. They will be 
+    retired in the next version, since they parallel new capabilities of 
+    readBin and writeBin.
+  - Argument 'col' of function 'write.gif' was changed to allow several other 
+    ways to define a color palette.
+  - base64encode and base64decode now use readBin and writeBin instead
+    raw2bin and bin2raw.
+ 6) caTools-1.6 (04/11/2006)
+  - functions raw2bin and bin2raw were retired, since they parallel new 
+    (as of R-2.2.0) capabilities of readBin and writeBin.
+  - Bug in plotting in colAUC function was fixed, after it was reported by Tom 
+    Wright.
+  - Documentation of colAUC was updated and some examples modified in order to 
+    reduce dependency on external libraries.
+  - GifTools.cc was split into GifTools.cpp and GifTools.cc. The first file
+    contains GIF encoding/decoding algorithm and second is a shell that 
+    comunicates with R.
+ 7) caTools-1.7 (Jan 31 2007)
+  - Added 4th variable in 'rgb' function (line 174).
+ 8) caTools-1.8 (Oct. 9 2007)
+  - Major changes to moving window statistics functions:
+    * use fast C code to process array edges
+    * added suport for NaN's
+    * added suport for even size windows
+    * split help file into 5 new help files
+    * added much more examples and self-tests
+  - Followed Prof. Brian Ripley request to move R header files out of extern "C" 
+    blocks in C++ files.
+  - Changed licence to GPL
+  9) caTools-1.9 (July 7 2008)
+  - No code changes
+  - Corrected inconsistent licence information
+  10) caTools-1.10 (Oct 08 2009)
+  - Fixed runmax to handle correctly negative numbers
+  - Added align argument to moving window statistics functions: runmean, runmax, 
+    runmin, runsd, runmad and runquintile functions. It allows left and right 
+    alligned window in addition to centered window. 
+  - Added support for 2D arrays to be passed to moving window statistics 
+    functions: runmean, runmax, runmin, runsd, runmad and runquintile functions.
+    If input array is a 2D matrix than the operations are performed for each 
+    column separately. This change was mostly handled by EndRule function. Speed
+    for 2D array input is expected to be slower than for vectors since 
+    calculations for beggining and end of arrays if handled in R instead of C.
+    is expected to be 
+  - Changed "if(!require(LIB)) warning(..." to ""library(LIB)" to get rid or 
+    warnings by RCMD CHECK
+  11) caTools-1.11 (Dec 2010)  
+  - Changed EndRule function used by all run... functions to fix handling of 
+    different endrules when for non-central aligments and for k=2.
+  - Fully retired runsum.exact, which was not working for a while, use runmean
+    with "exact" option instead.
+  - Removed references to several no-longer-existing packages and functions from 
+    Rd files.  
+  - changed documentation of predict.LogitBoost to follow S3 mathod syntax.
+  - renamed sum.exact and cumsum.exact to sumexact and cumsumexact to avoid 
+    package build errors. those functions were confused with S3 mathods.
+====================================================\==========================                 
+ Jarek Tuszynski, PhD.                           o / \ 
+ Science Applications International Corporation  <\__,|  
+ Jaroslaw.W.Tuszynski@saic.com                    ">   \
+                                                   `    \
+

@@ -1,0 +1,22 @@
+Source: catools
+Section: gnu-r
+Priority: optional
+Maintainer: cran2deb autobuild <cran2deb@gmail.com>
+Build-Depends: r-base-dev, r-cran-bitops, xvfb, xauth, xfonts-base,
+ r-base-core, debhelper (>> 4.1.0), cdbs
+Standards-Version: 3.9.1
+
+Package: r-cran-catools
+Architecture: any
+Depends: r-base-core, r-cran-bitops, ${shlibs:Depends}
+Description: GNU R package "Tools: moving window statistics, GIF,
+ Base64, ROC AUC, etc."
+ .
+ Contains several basic utility functions including: moving (rolling,
+ running) window statistic functions, read/write for GIF and ENVI
+ binary files, fast calculation of AUC, LogitBoost classifier, base64
+ encoder/decoder, round-off error free sum and cumsum, etc.
+ .
+ Author: Jarek Tuszynski <jaroslaw.w.tuszynski@saic.com>
+ .
+ Maintainer: Jarek Tuszynski <jaroslaw.w.tuszynski@saic.com>
